@@ -1,21 +1,22 @@
-package org.bkkimutai;
+package org.bkkimutai.models;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Squad {
-    private String mSquadName;
-    private  String mDescription;
-    private static List<Squad> instances = new ArrayList<Squad>();
-    private int mId;
-    private List<Hero> mHeroes;
-
+    private String squadName;
+    private  String description;
+    private static boolean isRegisteredHero = false;
+    private static List<Squad> heroMembers = new ArrayList<Squad>();
+    private static List<Squad> squadList = new ArrayList<>();
+    private int squadId;
+    private boolean isSquadFull = false;
 
     public Squad (String squadName, String description){
-        mSquadName = squadName;
-        mDescription= description;
-        instances.add(this);
-        mId = instances.size();
+        this.squadName = squadName;
+        this.description= description;
+        squadList.add(this);
+        squadId = heroMembers.size();
         mHeroes = new ArrayList<Hero>();
 
     }
