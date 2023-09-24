@@ -5,59 +5,55 @@ import java.util.List;
 
 public class Squad {
     private String squadName;
-    private  String description;
-    private static boolean isRegisteredHero = false;
+    private  String cause;
     private static List<Squad> heroMembers = new ArrayList<Squad>();
-    private static List<Squad> squadList = new ArrayList<>();
+    private int maxSize;
     private int squadId;
-    private boolean isSquadFull = false;
 
-    public Squad (String squadName, String description){
+    public Squad (String squadName, String cause){
         this.squadName = squadName;
-        this.description= description;
-        squadList.add(this);
+        this.cause= cause;
+        heroMembers.add(this);
         squadId = heroMembers.size();
-        mHeroes = new ArrayList<Hero>();
-
     }
 
-    public String getmSquadName() {
-        return mSquadName;
+    public String getSquadName() {
+        return squadName;
     }
 
-    public void setmSquadName(String mSquadName) {
-        this.mSquadName = mSquadName;
+    public void setSquadName(String squadName) {
+        this.squadName = squadName;
     }
 
-    public String getmDescription() {
-        return mDescription;
+    public String getCause() {
+        return cause;
     }
 
-    public void setmDescription(String mDescription) {
-        this.mDescription = mDescription;
+    public void setCause(String cause) {
+        this.cause = cause;
     }
 
-    public static List<Squad> getInstances() {
-        return instances;
+    public static List<Squad> getHeroMembers() {
+        return heroMembers;
     }
 
-    public static void setInstances(List<Squad> instances) {
-        Squad.instances = instances;
+    public static void setHeroMembers(List<Squad> heroMembers) {
+        Squad.heroMembers = heroMembers;
     }
 
-    public int getmId() {
-        return mId;
+    public int getMaxSize() {
+        return maxSize;
     }
 
-    public void setmId(int mId) {
-        this.mId = mId;
+    public void setMaxSize(int maxSize) {
+        this.maxSize = maxSize;
     }
 
-    public List<Hero> getmHeroes() {
-        return mHeroes;
+    public int getSquadId() {
+        return squadId;
     }
 
-    public void setmHeroes(List<Hero> mHeroes) {
-        this.mHeroes = mHeroes;
+    public void setSquadId(int squadId) {
+        this.squadId = squadId;
     }
 }
