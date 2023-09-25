@@ -31,4 +31,20 @@ public class heroSquadDao {
             return null;
         }
     }
+
+    public static void addSquad(Squad newSquad) {
+        try (Connection connection = sql2o.open()) {
+            connection.createQuery("INSERT INTO squads (squadName, squadCause, maxSize) " +
+                            "VALUES (:squadName, :squadCause, :maxSize)")
+                    .addParameter("squadName", newSquad.getSquadName())
+                    .addParameter("squadCause", newSquad.getSquadCause())
+                    .addParameter("maxSize", newSquad.getMaxSize())
+                    .executeUpdate();
+        } catch (Exception exception) {
+            System.out.println(exception.getMessage());
+        }
+    }
+
+    public static void addHero(Hero newHero) {
+    }
 }
