@@ -1,6 +1,5 @@
 package org.bkkimutai.models;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,13 +13,13 @@ public class Hero {
     private int squadId;
     private static boolean duplicate = false;
 
-    public Hero(String heroName, int heroAge, String heroPower, String heroWeakness, int heroId, int squadId) {
+    public Hero(String heroName, int heroAge, String heroPower, String heroWeakness, int squadId) {
         this.squadId = squadId;
         this.heroName = heroName;
         this.heroAge = heroAge;
         this.heroPower = heroPower;
         this.heroWeakness = heroWeakness;
-        this.heroId = heroId;
+        this.heroId = instances.size();
 
     }
 

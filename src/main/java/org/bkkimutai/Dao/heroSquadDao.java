@@ -46,5 +46,17 @@ public class heroSquadDao {
     }
 
     public static void addHero(Hero newHero) {
+        try (Connection connection = sql2o.open()) {
+            connection.createQuery("INSERT INTO heros (heroName, heroAge, heroPower, heroWeakness, squadId, avatarUrl) " +
+                            "VALUES (:heroName, :heroAge, :heroPower, :heroWeakness, :squadId)")
+                    .addParameter("heroName", newHero.getHeroName())
+                    .addParameter("heroAge", newHero.getHeroAge())
+                    .addParameter("heroPower", newHero.getHeroPower())
+                    .addParameter("heroWeakness", newHero.getHeroWeakness())
+                    .addParameter("squadId", newHero.getSquadId())
+                    .executeUpdate();
+        } catch (Exception exception) {
+            System.out.println(exception.getMessage());
+        }
     }
 }

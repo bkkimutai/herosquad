@@ -55,6 +55,20 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         //process new hero
+        post("/heros",(request,response)->{
+            Map<String,Object> payload = new HashMap<>();
+            String heroName = request.queryParams("heroName");
+            int heroAge = Integer.parseInt(request.queryParams("heroAge"));
+            String heroPower = request.queryParams("heroPower");
+            String heroWeakness = request.queryParams("heroWeakness");
+            int squadId = Integer.parseInt(request.queryParams("squadId"));
+            Hero newHero = new Hero(heroName,heroAge,heroPower,heroWeakness,squadId);
+            heroSquadDao.addHero(newHero);
+            response.redirect("/");
+            return null;
+        }, new HandlebarsTemplateEngine());
+
+
 
     }
 }
