@@ -5,54 +5,55 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Hero {
-    private String name;
-    private String age;
-    private String power;
-    private String weakness;
+    private String heroName;
+    private int heroAge;
+    private String heroPower;
+    private String heroWeakness;
     private static List<Hero> instances = new ArrayList<Hero>();
-    private int heroID;
-    private String squadAlliance;
+    private int heroId;
+    private int squadId;
     private static boolean duplicate = false;
 
-    public Hero(String name,String age, String power, String weakness){
-        this.name = name;
-        this.age = age;
-        this.power = power;
-        this.weakness = weakness;
-        instances.add(this);
-        heroID = instances.size();
+    public Hero(String heroName, int heroAge, String heroPower, String heroWeakness, int heroId, int squadId) {
+        this.squadId = squadId;
+        this.heroName = heroName;
+        this.heroAge = heroAge;
+        this.heroPower = heroPower;
+        this.heroWeakness = heroWeakness;
+        this.heroId = heroId;
+
     }
 
-    public String getName() {
-        return name;
+    public String getHeroName() {
+        return heroName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setHeroName(String heroName) {
+        this.heroName = heroName;
     }
 
-    public String getAge() {
-        return age;
+    public int getHeroAge() {
+        return heroAge;
     }
 
-    public void setAge(String age) {
-        this.age = age;
+    public void setHeroAge(int heroAge) {
+        this.heroAge = heroAge;
     }
 
-    public String getPower() {
-        return power;
+    public String getHeroPower() {
+        return heroPower;
     }
 
-    public void setPower(String power) {
-        this.power = power;
+    public void setHeroPower(String heroPower) {
+        this.heroPower = heroPower;
     }
 
-    public String getWeakness() {
-        return weakness;
+    public String getHeroWeakness() {
+        return heroWeakness;
     }
 
-    public void setWeakness(String weakness) {
-        this.weakness = weakness;
+    public void setHeroWeakness(String heroWeakness) {
+        this.heroWeakness = heroWeakness;
     }
 
     public static List<Hero> getInstances() {
@@ -63,20 +64,20 @@ public class Hero {
         Hero.instances = instances;
     }
 
-    public int getHeroID() {
-        return heroID;
+    public int getHeroId() {
+        return heroId;
     }
 
-    public void setHeroID(int heroID) {
-        this.heroID = heroID;
+    public void setHeroId(int heroId) {
+        this.heroId = heroId;
     }
 
-    public String getSquadAlliance() {
-        return squadAlliance;
+    public int getSquadId() {
+        return squadId;
     }
 
-    public void setSquadAlliance(String squadAlliance) {
-        this.squadAlliance = squadAlliance;
+    public void setSquadId(int squadId) {
+        this.squadId = squadId;
     }
 
     public static boolean isDuplicate() {
@@ -86,4 +87,6 @@ public class Hero {
     public static void setDuplicate(boolean duplicate) {
         Hero.duplicate = duplicate;
     }
+
+
 }

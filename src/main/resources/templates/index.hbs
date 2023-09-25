@@ -1,0 +1,25 @@
+{{#partial "content"}}
+    <h1>Post list!</h1>
+
+    {{#if heros}} <!--if heros exist, then -->
+    <h1>Current Heros:</h1>
+    {{#each heros}} <!--loop-->
+    <div class="post">
+        <p>Name & ID:{{ heroName }} | {{heroId}} </p>
+        <p>Age:{{ heroAge }} </p>
+        <p>Hero Power: {{ heroPower }} </p>
+        <p> Hero Weakness: {{heroWeakness}}</p>
+        <p>Squad: {{squadId }}</p>
+        <a href="/delete/{{email}}"> Delete User</a>
+    </div>
+    <hr> <!-- horizontal line after each post -->
+    {{/each}}
+    {{else}}
+        <div class="container text-center border border-primary mt-5">
+            <p>Ooops!, Some rogue Thanos Agent Wiped all life form on earth <i class="fa fa-heart-broken"></i></p>
+            <p>I think you were the agent though 🤔, create a super hero to prove that you're not the evil agent.</p>
+            <p><a class="btn btn-outline-primary" href="/heros/new">Add A New Hero <i class="fa fa-mask"></i></a></p>
+        </div>
+    {{/if}}
+{{/partial}}
+{{> layout.hbs}}
