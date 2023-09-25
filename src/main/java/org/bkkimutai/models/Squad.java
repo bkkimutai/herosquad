@@ -11,13 +11,12 @@ public class Squad {
     private int squadId;
     private boolean squadFull;
 
-    public Squad (String squadName, String SquadCause, int maxSize){
+    public Squad(String squadName, String squadCause, int maxSize) {
         this.squadName = squadName;
-        this.SquadCause= SquadCause;
+        this.SquadCause = squadCause;
         this.maxSize = maxSize;
+        this.squadId = heroMembers.size() + 1;
         this.squadFull = false;
-        heroMembers.add(this);
-        squadId = heroMembers.size();
     }
 
     public String getSquadName() {
@@ -32,8 +31,8 @@ public class Squad {
         return SquadCause;
     }
 
-    public void setSquadCauseCause(String cause) {
-        this.SquadCause = SquadCause;
+    public void setSquadCause(String squadCause) {
+        SquadCause = squadCause;
     }
 
     public static List<Squad> getHeroMembers() {

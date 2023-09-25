@@ -19,8 +19,8 @@ public class App {
         //show all heros in all squads and show all squads
         get("/", (req, res) -> {
             Map<String, Object> payload = new HashMap<>();
-            List<Squad> allSquads = heroSquadDao.getAllSquads();
-            payload.put("squads", allSquads);
+            List<Squad> squads = heroSquadDao.getAllSquads();
+            payload.put("squads", squads);
             List<Hero> heros = heroSquadDao.getAllHeros();
             payload.put("heros", heros);
             return new ModelAndView(payload, "index.hbs");
@@ -28,7 +28,7 @@ public class App {
 
         //display form to create a new squad
         get("/squads/new", (request, response) -> {
-            Map<String, List<Squad>> payload = new HashMap<>();
+            Map<String, Object> payload = new HashMap<>();
             List<Squad> squads = heroSquadDao.getAllSquads();
             payload.put("squads", squads);
             return new ModelAndView(payload, "new-squad.hbs");

@@ -19,8 +19,7 @@ public class Hero {
         this.heroAge = heroAge;
         this.heroPower = heroPower;
         this.heroWeakness = heroWeakness;
-        this.heroId = instances.size();
-
+        this.heroId = instances.size()+1;
     }
 
     public String getHeroName() {

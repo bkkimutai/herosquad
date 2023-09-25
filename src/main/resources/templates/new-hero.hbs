@@ -1,5 +1,4 @@
 {{#partial "content"}}
-
     <h2 class="text-center">Create A New Hero</h2>
 
     {{#if squads}}
@@ -26,7 +25,7 @@
                     <label for="squadId">Add hero to a squad:</label>
                     <select id="squadId" name="squadId" required>
                         {{#each squads}}
-                            <option value="{{id}}">{{squadName}}</option>
+                            <option value="{{squadId}}">{{squadName}}</option>
                         {{/each}}
                     </select>
                 </div>
