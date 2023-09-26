@@ -22,6 +22,7 @@ public class Hero {
         this.heroId = instances.size()+1;
     }
 
+
     public String getHeroName() {
         return heroName;
     }

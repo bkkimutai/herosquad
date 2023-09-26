@@ -1,6 +1,8 @@
 package org.bkkimutai;
 
+import org.bkkimutai.Dao.HeroWithSquad;
 import org.bkkimutai.Dao.heroSquadDao;
+import org.bkkimutai.Dao.heroWithSquadDao;
 import org.bkkimutai.models.Hero;
 import org.bkkimutai.models.Squad;
 import spark.ModelAndView;
@@ -19,12 +21,27 @@ public class App {
         //show all heros in all squads and show all squads
         get("/", (req, res) -> {
             Map<String, Object> payload = new HashMap<>();
-            List<Squad> squads = heroSquadDao.getAllSquads();
-            payload.put("squads", squads);
-            List<Hero> heros = heroSquadDao.getAllHeros();
-            payload.put("heros", heros);
+
+            // Step 1: Retrieve heroes with squads
+            List<HeroWithSquad> heroesWithSquads = heroWithSquadDao.getAllHerosWithSquads();
+
+            // Add the list of heroes with squads to the payload
+            payload.put("heroesWithSquads", heroesWithSquads);
+
+            // You can also add other data to the payload as needed
+            // ...
+
+            // Step 2: Render the Handlebars template with the payload
             return new ModelAndView(payload, "index.hbs");
         }, new HandlebarsTemplateEngine());
+//        get("/", (req, res) -> {
+//            Map<String, Object> payload = new HashMap<>();
+//            List<Squad> squads = heroSquadDao.getAllSquads();
+//            payload.put("squads", squads);
+//            List<Hero> heros = heroSquadDao.getAllHeros();
+//            payload.put("heros", heros);
+//            return new ModelAndView(payload, "index.hbs");
+//        }, new HandlebarsTemplateEngine());
 
         //display form to create a new squad
         get("/squads/new", (request, response) -> {

@@ -58,6 +58,6 @@ public class heroSquadDao {
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
         }
-    
+
     }
 }
