@@ -1,6 +1,7 @@
 package org.bkkimutai.Dao;
 
 import org.bkkimutai.Config.Database;
+import org.bkkimutai.models.HeroWithSquad;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 

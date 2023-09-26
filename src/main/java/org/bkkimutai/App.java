@@ -1,6 +1,6 @@
 package org.bkkimutai;
 
-import org.bkkimutai.Dao.HeroWithSquad;
+import org.bkkimutai.models.HeroWithSquad;
 import org.bkkimutai.Dao.heroSquadDao;
 import org.bkkimutai.Dao.heroWithSquadDao;
 import org.bkkimutai.models.Hero;
@@ -21,19 +21,11 @@ public class App {
         //show all heros in all squads and show all squads
         get("/", (req, res) -> {
             Map<String, Object> payload = new HashMap<>();
-
-            // Step 1: Retrieve heroes with squads
             List<HeroWithSquad> heroesWithSquads = heroWithSquadDao.getAllHerosWithSquads();
-
-            // Add the list of heroes with squads to the payload
             payload.put("heroesWithSquads", heroesWithSquads);
-
-            // You can also add other data to the payload as needed
-            // ...
-
-            // Step 2: Render the Handlebars template with the payload
             return new ModelAndView(payload, "index.hbs");
         }, new HandlebarsTemplateEngine());
+
 //        get("/", (req, res) -> {
 //            Map<String, Object> payload = new HashMap<>();
 //            List<Squad> squads = heroSquadDao.getAllSquads();
@@ -83,6 +75,30 @@ public class App {
             heroSquadDao.addHero(newHero);
             response.redirect("/");
             return null;
+        }, new HandlebarsTemplateEngine());
+
+        //display a single hero from a squad
+        get("squads/:squadId/heros/:heroId",(request,response)->{
+            Map<String,Object> model = new HashMap<>();
+            int heroId = Integer.parseInt(request.params("heroId"));
+            Hero foundHero = heroSquadDao.findHeroById(heroId);
+            model.put("hero",foundHero);
+            int squadId = Integer.parseInt(request.params("squadId"));
+            Squad foundSquad = heroSquadDao.findSquadById(squadId);
+            model.put("squad",foundSquad);
+            model.put("squads",heroWithSquadDao.getAllHerosWithSquads());
+            return new ModelAndView(model,"hero-details.hbs");
+        },new HandlebarsTemplateEngine());
+
+        get("/squads/:squadId",(request,response)->{
+            Map<String,Object> model = new HashMap<>();
+            int squadToFindId = Integer.parseInt(request.params("squadId"));
+            Squad foundSquad = heroSquadDao.findSquadById(squadToFindId);
+            model.put("squad",foundSquad);
+            List<Hero> allHerosBySquad = heroSquadDao.getAllHerosBySquad(squadToFindId);
+            model.put("heros",allHerosBySquad);
+            model.put("squads",heroSquadDao.getAllSquads());
+            return new ModelAndView(model,"squad-details.hbs");
         }, new HandlebarsTemplateEngine());
 
 

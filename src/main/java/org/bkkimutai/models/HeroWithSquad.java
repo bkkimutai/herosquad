@@ -1,4 +1,4 @@
-package org.bkkimutai.Dao;
+package org.bkkimutai.models;
 
 import org.bkkimutai.Config.Database;
 import org.sql2o.Connection;
@@ -19,11 +19,12 @@ public class HeroWithSquad {
         this.squadName = squadName;
     }
 
-    public int getId() {
+    public int getHeroId() {
         return heroId;
     }
 
-    public void setId(int id) {
+    public void setHeroId(int heroId) {
+        this.heroId = heroId;
     }
 
     public String getHeroName() {

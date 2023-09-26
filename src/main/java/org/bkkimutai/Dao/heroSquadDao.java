@@ -21,6 +21,7 @@ public class heroSquadDao {
             return null;
         }
     }
+
     public static List<Hero> getAllHeros() {
         try (Connection connection = sql2o.open()) {
             return connection.createQuery("SELECT * FROM heros;")
@@ -59,5 +60,38 @@ public class heroSquadDao {
             System.out.println(exception.getMessage());
         }
 
+    }
+
+    public static Hero findHeroById(int heroId) {
+        try (Connection connection = sql2o.open()) {
+            return connection.createQuery("SELECT * FROM heros WHERE heroId = :heroId")
+                    .addParameter("heroId", heroId)
+                    .executeAndFetchFirst(Hero.class); // Fetch the first result
+        } catch (Exception exception) {
+            System.out.println(exception.getMessage());
+            return null; // Handle exceptions appropriately
+        }
+    }
+
+    public static Squad findSquadById(int squadId) {
+        try (Connection connection = sql2o.open()) {
+            return connection.createQuery("SELECT * FROM squads WHERE squadId = :squadId")
+                    .addParameter("squadId", squadId)
+                    .executeAndFetchFirst(Squad.class); // Fetch the first result
+        } catch (Exception exception) {
+            System.out.println(exception.getMessage());
+            return null; // Handle exceptions appropriately
+        }
+    }
+
+    public static List<Hero> getAllHerosBySquad(int squadId) {
+        try (Connection connection = sql2o.open()) {
+            return connection.createQuery("SELECT * FROM heros WHERE squadId = :squadId")
+                    .addParameter("squadId", squadId)
+                    .executeAndFetch(Hero.class);
+        } catch (Exception exception) {
+            System.out.println(exception.getMessage());
+            return null; // Handle exceptions appropriately
+        }
     }
 }
