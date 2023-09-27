@@ -101,6 +101,23 @@ public class App {
             return new ModelAndView(model,"squad-details.hbs");
         }, new HandlebarsTemplateEngine());
 
+        //delete squad by id
+        get("/squads/:squadId/delete",(request, response)->{
+            Map<String, Object> model = new HashMap<>();
+            int idOfSquadToDelete = Integer.parseInt(request.params("squadId"));
+            heroSquadDao.deleteSquadById(idOfSquadToDelete);
+            response.redirect("/");
+            return null;
+        }, new HandlebarsTemplateEngine());
+
+        //delete hero by id
+        get("squads/:squadId/heros/:heroId/delete",(request, response)->{
+            Map<String,Object>model = new HashMap<>();
+            int idOfHeroToDelete = Integer.parseInt(request.params("heroId"));
+            heroSquadDao.deleteHeroById(idOfHeroToDelete);
+            response.redirect("/");
+            return null;
+        },new HandlebarsTemplateEngine());
 
 
     }

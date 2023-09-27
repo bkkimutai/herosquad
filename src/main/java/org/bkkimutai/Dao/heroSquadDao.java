@@ -64,7 +64,7 @@ public class heroSquadDao {
 
     public static Hero findHeroById(int heroId) {
         try (Connection connection = sql2o.open()) {
-            return connection.createQuery("SELECT * FROM heros WHERE heroId = :heroId")
+            return connection.createQuery("SELECT * FROM heros WHERE heroId = :heroId;")
                     .addParameter("heroId", heroId)
                     .executeAndFetchFirst(Hero.class); // Fetch the first result
         } catch (Exception exception) {
@@ -92,6 +92,26 @@ public class heroSquadDao {
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
             return null; // Handle exceptions appropriately
+        }
+    }
+
+    public static void deleteSquadById(int squadId) {
+        try (Connection connection = sql2o.open()) {
+            connection.createQuery("DELETE FROM squads WHERE squadId = :squadId;")
+                    .addParameter("squadId", squadId)
+                    .executeUpdate();
+        } catch (Exception exception) {
+            System.out.println(exception.getMessage());
+        }
+    }
+
+    public static void deleteHeroById(int heroId) {
+        try (Connection connection = sql2o.open()) {
+            connection.createQuery("DELETE FROM heros WHERE heroId = :heroId;")
+                    .addParameter("heroId", heroId)
+                    .executeUpdate();
+        } catch (Exception exception) {
+            System.out.println(exception.getMessage());
         }
     }
 }
