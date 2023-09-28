@@ -44,6 +44,5 @@ public class SquadTest {
         assertFalse(squad.isSquadFull());
     }
 
-    // Add more test methods as needed
 
 }

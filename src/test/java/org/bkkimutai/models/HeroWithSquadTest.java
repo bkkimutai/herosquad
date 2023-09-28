@@ -10,7 +10,6 @@ public class HeroWithSquadTest {
 
     @BeforeEach
     public void setUp() {
-        // Create a HeroWithSquad instance for testing
         heroWithSquad = new HeroWithSquad(1, "Superman", 1001, "Justice League");
     }
 
