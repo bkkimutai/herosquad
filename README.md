@@ -31,10 +31,6 @@ During the creation of a new hero/squad, these are the traits that they should c
 * Junit
 
 ## Setup Guide
-+ Run `java --version` to check which version of java you have installed in your device. If you have java installed, you should see an output slightly similar to the one below...  
-  _**openjdk 10.0.2 2018-07-17**_  
-  _**OpenJDK Runtime Environment (build 10.0.2+13-Ubuntu-1ubuntu0.18.04.4)**_  
-  ... then you need to install java by running this : `sudo apt install default-jre`
 
 + Clone the repository into a desired folder by running the following link in your terminal: `https://github.com/bkkimutai/herosquad.git`
 
