@@ -114,4 +114,19 @@ public class heroSquadDao {
             System.out.println(exception.getMessage());
         }
     }
+    public static void updateHero(Hero updatedHero) {
+        try (Connection connection = sql2o.open()) {
+            connection.createQuery("UPDATE heros SET heroName = :heroName, heroAge = :heroAge, " +
+                            "heroPower = :heroPower, heroWeakness = :heroWeakness, squadId = :squadId " +
+                            "WHERE heroName = :heroName")
+                    .addParameter("heroName", updatedHero.getHeroName())
+                    .addParameter("heroAge", updatedHero.getHeroAge())
+                    .addParameter("heroPower", updatedHero.getHeroPower())
+                    .addParameter("heroWeakness", updatedHero.getHeroWeakness())
+                    .addParameter("squadId", updatedHero.getSquadId())
+                    .executeUpdate();
+        } catch (Exception exception) {
+            System.out.println(exception.getMessage());
+        }
+    }
 }

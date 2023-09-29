@@ -80,7 +80,7 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         //display a single hero from a squad
-        get("squads/:squadId/heros/:heroId", (request, response) -> {
+        get("/squads/:squadId/heros/:heroId", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             int heroId = Integer.parseInt(request.params("heroId"));
             Hero foundHero = heroSquadDao.findHeroById(heroId);
@@ -140,7 +140,6 @@ public class App {
 //            Map<String, Object> model = new HashMap<>();
 //            List<Squad> allSquads = heroSquadDao.getAllSquads();
 //            model.put("squad", allSquads);
-//
 //            Map<Integer, List<Hero>> heroSquadsMap = new HashMap<>(); // Renamed the map
 //            for (Squad squad : allSquads) {
 //                List<Hero> allHerosBySquad = heroSquadDao.getAllHerosBySquad(squad.getSquadId());
@@ -151,12 +150,36 @@ public class App {
 //                    System.out.println("Hero Name: " + hero.getHeroName());
 //                }
 //            }
-//
 //            model.put("heroSquadsMap", heroSquadsMap); // Updated key to "heroSquadsMap"
-//
 //            model.put("allsquads", heroSquadDao.getAllSquads());
-//
 //            return new ModelAndView(model, "allherosquad-details.hbs");
 //        }, new HandlebarsTemplateEngine());
+        get("/squads/:squadId/heros/:heroId/update-hero", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int heroId = Integer.parseInt(req.params("heroId"));
+            Hero foundHero = heroSquadDao.findHeroById(heroId);
+            model.put("hero", foundHero);
+            int squadId = Integer.parseInt(req.params("squadId"));
+            Squad foundSquad = heroSquadDao.findSquadById(squadId);
+            model.put("squad", foundSquad);
+            model.put("squads", heroSquadDao.getAllSquads());
+            return new ModelAndView(model, "update-hero.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        post("/update-hero", (req, res) -> {
+            Map<String, Object> payload = new HashMap<>();
+            String heroName = req.queryParams("heroName");
+            int heroAge = Integer.parseInt(req.queryParams("heroAge"));
+            String heroPower = req.queryParams("heroPower");
+            String heroWeakness = req.queryParams("heroWeakness");
+            int squadId = Integer.parseInt(req.queryParams("squadId"));
+            // Create an updatedHero object with the heroId
+            Hero updatedHero = new Hero(heroName, heroAge, heroPower, heroWeakness, squadId);
+            heroSquadDao.updateHero(updatedHero);
+            res.redirect("/");
+            return null;
+        }, new HandlebarsTemplateEngine());
+
     }
+
 }

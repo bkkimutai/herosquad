@@ -6,39 +6,33 @@
             <h1>Super Heroes!</h1>
             <p><a class="btn btn-outline-primary" href="/heros/new">+ Add New Hero</a></p>
             <p data-bs-toggle="tooltip" data-bs-placement="top"
-               title="Call from Thanos, All hero's will be wiped , the action is irreversible"><a
-                    class="btn btn-danger" href="/squads/delete">Destroy Planet Earth <i
+               title="Call from Thanos, All heroes will be wiped, the action is irreversible"><a
+                    class="btn btn-danger" href="/squads/delete">Destroying Planet Earth Prohibited! <i
                     class="fa fa-skull-crossbones"></i> </a></p>
-
-                    <div class="d-flex row">
-                        <div class="row justify-content-between">
-                            {{#each heroesWithSquads}}
-                                <div class="card" style="width: 18rem;">
-                                    <h5 class="card-title pt-1"> {{heroName}} </h5>
-                                    <img class="card-img-top pt-2" src="{{avatarUrl}}" alt="Card image cap"
-                                         height="200px" width="200px">
-                                    <div class="card-body">
-                                        <p class="card-text"><a href="/squads/{{squadId}}">Hero Squad: {{squadName}}</a>
-                                        </p>
-                                        <a href="squads/{{squadId}}/heros/{{heroId}}" class="btn btn-primary"> Spy
-                                            On {{heroName}} </a>
-                                    </div>
+            <div class="container text-start mx-auto">
+                <div class="row">
+                    {{#each heroesWithSquads}}
+                        <div class="col-md-4">
+                            <div class="card mb-3">
+                                <img class="card-img-top" src="{{avatarUrl}}" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{heroName}}</h5>
+                                    <p class="card-text"><a href="/squads/{{squadId}}">Hero Squad: {{squadName}}</a></p>
+                                    <a href="squads/{{squadId}}/heros/{{heroId}}" class="btn btn-primary"> Spy On {{heroName}}</a>
                                 </div>
-                            {{/each}}
+                            </div>
                         </div>
-                    </div>
-            {{else}}
-
-                <div class="container text-center border border-primary mt-5">
-                    <p>Ooops!, Some rogue Thanos Agent Wiped all life form on earth <i class="fa fa-heart-broken"></i></p>
-                    <p>I think you were the agent though 🤔, create a super hero to prove that you're not the evil agent.</p>
-                    <p><a class="btn btn-outline-primary" href="/heros/new">Add A New Hero <i class="fa fa-mask"></i></a></p>
+                    {{/each}}
                 </div>
-
+            </div>
+        {{else}}
+            <div class="container text-center border border-primary mt-5">
+                <p>Ooops!, Some rogue Thanos Agent Wiped all life forms on earth <i class="fa fa-heart-broken"></i></p>
+                <p>I think you were the agent though 🤔, create a superhero to prove that you're not the evil agent.</p>
+                <p><a class="btn btn-outline-primary" href="/heros/new">Add A New Hero <i class="fa fa-mask"></i></a></p>
+            </div>
         {{/if}}
     </div>
-
-
 
 {{/partial}}
 
