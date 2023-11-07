@@ -10,7 +10,7 @@ public class HeroWithSquadTest {
 
     @BeforeEach
     public void setUp() {
-        heroWithSquad = new HeroWithSquad(1, "Superman", 1001, "Justice League");
+        heroWithSquad = new HeroWithSquad(1, "Superman", 1001, "Justice League","Name",1, "FinTech");
     }
 
     @Test

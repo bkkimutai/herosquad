@@ -13,9 +13,9 @@ public class heroWithSquadDao {
     public static List<HeroWithSquad> getAllHerosWithSquads() {
         try (Connection connection = sql2o.open()) {
             return connection.createQuery(
-                            "SELECT h.heroId, h.heroName, h.squadId, s.squadName " +
-                                    "FROM heros h " +
-                                    "INNER JOIN squads s ON h.squadId = s.squadId;")
+                            "SELECT h.heroId, h.heroName, h.squadId, s.squadName, h.heroName, h.heroAge, h.heroPower, h.heroWeakness " +
+                                    "FROM squads s " +
+                                    "INNER JOIN heros h ON s.squadId = h.squadId;")
                     .executeAndFetch(HeroWithSquad.class);
         } catch (Exception exception) {
             System.out.println(exception.getMessage());

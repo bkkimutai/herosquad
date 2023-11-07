@@ -14,11 +14,13 @@
                     {{#each heroesWithSquads}}
                         <div class="col-md-4">
                             <div class="card mb-3">
-                                <img class="card-img-top" src="{{avatarUrl}}" alt="Card image cap">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{heroName}}</h5>
+                                    <a href="squads/{{squadId}}/heros/{{heroId}}" class="btn btn-primary" style="width: 100%;"> {{heroName}} > Click to Spy</a>
                                     <p class="card-text"><a href="/squads/{{squadId}}">Hero Squad: {{squadName}}</a></p>
-                                    <a href="squads/{{squadId}}/heros/{{heroId}}" class="btn btn-primary"> Spy On {{heroName}}</a>
+                                    <p>Age: {{heroAge}}</p>
+                                    <p>Power: {{heroPower}}</p>
+                                    <p>Weakness: {{heroWeakness}}</p>
+
                                 </div>
                             </div>
                         </div>

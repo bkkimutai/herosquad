@@ -9,12 +9,18 @@ import java.util.List;
 public class HeroWithSquad {
     private int heroId;
     private String heroName;
+    private int heroAge;
+    private String heroPower;
+    private String heroWeakness;
     private int squadId;
-    private String squadName; // Include squadName in HeroWithSquad
+    private String squadName;
 
-    public HeroWithSquad(int heroId, String heroName, int squadId, String squadName) {
+    public HeroWithSquad(int heroId, String heroName, int heroAge, String heroPower, String heroWeakness, int squadId, String squadName) {
         this.heroId = heroId;
         this.heroName = heroName;
+        this.heroAge = heroAge;
+        this.heroPower = heroPower;
+        this.heroWeakness = heroWeakness;
         this.squadId = squadId;
         this.squadName = squadName;
     }
@@ -49,6 +55,31 @@ public class HeroWithSquad {
 
     public void setSquadName(String squadName) {
         this.squadName = squadName;
+    }
+
+
+    public String getHeroPower() {
+        return heroPower;
+    }
+
+    public void setHeroPower(String heroPower) {
+        this.heroPower = heroPower;
+    }
+
+    public String getHeroWeakness() {
+        return heroWeakness;
+    }
+
+    public void setHeroWeakness(String heroWeakness) {
+        this.heroWeakness = heroWeakness;
+    }
+
+    public int getHeroAge() {
+        return heroAge;
+    }
+
+    public void setHeroAge(int heroAge) {
+        this.heroAge = heroAge;
     }
 }
 

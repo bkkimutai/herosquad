@@ -1,34 +1,19 @@
 {{#partial "content"}}
-    <div class="container text-center">
-        <h1><u>List of Squads</u></h1>
-        <div class="row">
-            {{#each squad}}
-                <div class="col-md-4">
-                    <div class="container text-start mx-auto" style="max-width: 500px;">
-                        <h1 class="text-center">{{squadName}}</h1>
-                        <div class="border text-center">
-                            <h5>Cause: {{squadCause}}</h5>
-                            <h5>Maximum Size: {{maxSize}} Members</h5>
-                            <a class="btn btn-primary" href="/squads/{{squadId}}">View Heroes on The {{squadName}} <i class="fa fa-exclamation-triangle"></i></a>
+
+        <div class="container text-start mx-auto">
+            <div class="row">
+                {{#each squad}}
+                    <div class="col-md-4">
+                            <a class="btn btn-primary" href="/squads/{{squadId}}"> {{squadName}} >Click to View Hero Members <i class="fa fa-exclamation-triangle"></i></a>
+                            <div class="border text-center">
+                                <h5>Cause: {{squadCause}}</h5>
+                                <h5>Maximum Size: {{maxSize}} Members</h5>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            {{/each}}
+                {{/each}}
+            </div>
         </div>
-        <hr>
-        <h1><u>List of Heroes</u></h1>
-        <div class="row">
-            {{#each heros}}
-                <div class="col-md-4">
-                    <div class="container text-start mx-auto" style="max-width: 500px;">
-                        <div class="border text-center">
-                            <a class="btn btn-primary" href="/squads/{{this.squadId}}/heros/{{this.heroId}}"><i class="fa fa-eye"></i> {{this.heroName}}</a>
-                        </div>
-                    </div>
-                </div>
-            {{/each}}
-        </div>
-    </div>
+
 {{/partial}}
 
 {{> "layout.hbs"}}
